@@ -1,10 +1,10 @@
-import { Flex, Spacer, Text, Box } from "@chakra-ui/react"
+import { Flex, Spacer, Box, Text } from "@chakra-ui/react"
 import Searchbar from "./Searchbar"
 import ThemeSwitch from "./ThemeSwitch"
 
 function Navbar() {
   return (
-    <Flex>
+    <Flex alignItems="center" padding="1rem">
       <Box>
         <Text>GameZone</Text>
       </Box>
