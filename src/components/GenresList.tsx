@@ -13,10 +13,11 @@ import { Genre } from "../types"
 import genresData from "../data/genres.json" // DEVELOPMENT PURPOSES ONLY
 
 type GenresListProps = {
+  selectedGenre: Genre | null
   handleGenreClick: (genre: Genre) => void
 }
 
-function GenresList({ handleGenreClick }: GenresListProps) {
+function GenresList({ selectedGenre, handleGenreClick }: GenresListProps) {
   // const { data, error, isLoading } = useData<Genre>("genres")
   // DEVELOPMENT PURPOSES ONLY
   const [data, setGenres] = useState<Genre[]>(genresData.results)
@@ -25,17 +26,31 @@ function GenresList({ handleGenreClick }: GenresListProps) {
 
   const genreList = data.map((genre) => {
     return (
-      <ListItem key={genre.id} paddingY={2}>
-        <HStack>
-          <Image src={genre.image_background} boxSize="2rem" />
-          <Button
-            variant="link"
-            fontSize="large"
-            onClick={() => handleGenreClick(genre)}
-          >
-            {genre.name}
-          </Button>
-        </HStack>
+      <ListItem
+        key={genre.id}
+        borderRadius="md"
+        bgColor={genre.id === selectedGenre?.id ? "gray.700" : ""}
+        _hover={{ backgroundColor: "gray.700" }}
+        fontWeight="bold"
+      >
+        <Button
+          onClick={() => handleGenreClick(genre)}
+          variant="link"
+          width="full"
+          justifyContent="flex-start"
+          padding={2}
+          _hover={{ textDecoration: "none" }}
+        >
+          <HStack>
+            <Image src={genre.image_background} boxSize={8} />
+            <Text
+              fontSize="large"
+              color={genre.id === selectedGenre?.id ? "gray.200" : ""}
+            >
+              {genre.name}
+            </Text>
+          </HStack>
+        </Button>
       </ListItem>
     )
   })

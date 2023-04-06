@@ -13,9 +13,10 @@ function CriticScore({ score }: CriticScoreProps) {
   } else {
     color = "red"
   }
+
   return (
-    <Badge colorScheme={color} fontSize={24} borderRadius="md" float="right">
-      {score}
+    <Badge colorScheme={color} fontSize={24} borderRadius="md" alignSelf="end">
+      {score ? score : "N/A"}
     </Badge>
   )
 }

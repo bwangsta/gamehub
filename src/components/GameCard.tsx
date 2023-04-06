@@ -15,8 +15,8 @@ type GameCardProps = {
 function GameCard({ name, image, platforms, score, genres }: GameCardProps) {
   return (
     <Card overflow="hidden">
-      <Image src={image} alt={name} />
-      <CardBody>
+      <Image src={image} alt={name} height="12.5rem" objectFit="cover" />
+      <CardBody display="flex" flexDirection="column" gap={2} padding={4}>
         <Heading size="md">{name}</Heading>
         <PlatformIcons platforms={platforms} />
         <GenreTags genres={genres} />
