@@ -10,6 +10,7 @@ type Game = {
   name: string
   background_image: string
   parent_platforms: { platform: Platform }[]
+  metacritic: number
 }
 
 type GamesResponse = {
@@ -43,6 +44,7 @@ function GameGrid() {
         name={game.name}
         image={game.background_image}
         platforms={game.parent_platforms}
+        score={game.metacritic}
       />
     )
   })
