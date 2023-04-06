@@ -8,7 +8,7 @@ type GenreTagsProps = {
 function GenreTags({ genres }: GenreTagsProps) {
   const genreTags = genres.map((genre) => {
     return (
-      <WrapItem>
+      <WrapItem key={genre.id}>
         <Tag>{genre.name}</Tag>
       </WrapItem>
     )

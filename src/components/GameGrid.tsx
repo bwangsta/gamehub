@@ -15,13 +15,27 @@ type Game = {
   genres: Genre[]
 }
 
-function GameGrid() {
-  // const { data, isLoading, error } = useData<Game>("games")
-  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+type GameGridProps = {
+  selectedGenre: Genre | null
+}
+
+function GameGrid({ selectedGenre }: GameGridProps) {
+  const { data, isLoading, error } = useData<Game>(
+    "games",
+    { params: { genres: selectedGenre?.id } },
+    [selectedGenre?.id]
+  )
+  const skeletonIds = []
+  for (let i = 0; i < 20; i++) {
+    skeletonIds.push(i)
+  }
+  const skeletons = skeletonIds.map((skeleton) => (
+    <GameCardSkeleton key={skeleton} />
+  ))
   // DEVELOPMENT PURPOSES ONLY
-  const [data, setGames] = useState<Game[]>(gamesData.results)
-  const [isLoading, setLoading] = useState(false)
-  const [error, setError] = useState("")
+  // const [data, setGames] = useState<Game[]>(gamesData.results)
+  // const [isLoading, setLoading] = useState(false)
+  // const [error, setError] = useState("")
 
   const gamesList = data.map((game) => {
     return (
@@ -46,9 +60,7 @@ function GameGrid() {
       spacing={4}
       padding={4}
     >
-      {isLoading &&
-        skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-      {gamesList}
+      {isLoading ? skeletons : gamesList}
     </SimpleGrid>
   )
 }
