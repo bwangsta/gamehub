@@ -2,6 +2,7 @@ import { Grid, GridItem, Show } from "@chakra-ui/react"
 import Navbar from "./components/Navbar"
 import GameGrid from "./components/GameGrid"
 import GenresList from "./components/GenresList"
+import PlatformSelector from "./components/PlatformSelector"
 import { Genre } from "./types"
 import { useState } from "react"
 
@@ -32,7 +33,8 @@ function App() {
           />
         </GridItem>
       </Show>
-      <GridItem area="main">
+      <GridItem area="main" padding={4}>
+        <PlatformSelector />
         <GameGrid selectedGenre={selectedGenre} />
       </GridItem>
       <GridItem area="footer">Footer</GridItem>
