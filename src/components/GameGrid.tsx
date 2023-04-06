@@ -1,10 +1,9 @@
 import { Text, SimpleGrid } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
-import axios from "axios"
 import GameCard from "./GameCard"
-import gamesData from "../data/games.json"
 import { Platform } from "../types"
 import GameCardSkeleton from "./GameCardSkeleton"
+import useData from "../hooks/useData"
+import gamesData from "../data/games.json"
 
 type Game = {
   id: number
@@ -14,32 +13,12 @@ type Game = {
   metacritic: number
 }
 
-type GamesResponse = {
-  count: number
-  results: Game[]
-}
-
 function GameGrid() {
-  const [games, setGames] = useState<Game[]>(gamesData.results) // TESTING PURPOSES ONLY
-  // const [games, setGames] = useState<Game[]>([])
-  const [isLoading, setLoading] = useState(false)
-  const [error, setError] = useState("")
+  // const [games, setGames] = useState<Game[]>(gamesData.results) // TESTING PURPOSES ONLY
+  const { data, isLoading, error } = useData<Game>("games")
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-  // useEffect(() => {
-  //   setLoading(true)
-  //   axios
-  //     .get<GamesResponse>(
-  //       `https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}`
-  //     )
-  //     .then((response) => setGames(response.data.results))
-  //     .catch((error) => {
-  //       setError(error.message)
-  //     })
-  //     .finally(() => setLoading(false))
-  // }, [])
-
-  const gamesList = games.map((game) => {
+  const gamesList = data.map((game) => {
     return (
       <GameCard
         key={game.id}
