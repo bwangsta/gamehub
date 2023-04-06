@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Text, SimpleGrid } from "@chakra-ui/react"
 import GameCard from "./GameCard"
-import { Platform } from "../types"
+import { Platform, Genre } from "../types"
 import GameCardSkeleton from "./GameCardSkeleton"
 import useData from "../hooks/useData"
 import gamesData from "../data/games.json" // DEVELOPMENT PURPOSES ONLY
@@ -12,6 +12,7 @@ type Game = {
   background_image: string
   parent_platforms: { platform: Platform }[]
   metacritic: number
+  genres: Genre[]
 }
 
 function GameGrid() {
@@ -30,6 +31,7 @@ function GameGrid() {
         image={game.background_image}
         platforms={game.parent_platforms}
         score={game.metacritic}
+        genres={game.genres}
       />
     )
   })

@@ -1,13 +1,8 @@
 import { useState } from "react"
 import { HStack, Text, List, ListItem, Image, Spinner } from "@chakra-ui/react"
 import useData from "../hooks/useData"
+import { Genre } from "../types"
 import genresData from "../data/genres.json" // DEVELOPMENT PURPOSES ONLY
-
-type Genre = {
-  id: number
-  name: string
-  image_background: string
-}
 
 function GenresList() {
   // const { data, error, isLoading } = useData<Genre>("genres")

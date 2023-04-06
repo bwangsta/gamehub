@@ -4,7 +4,7 @@ import ThemeSwitch from "./ThemeSwitch"
 
 function Navbar() {
   return (
-    <Flex alignItems="center" padding="1rem">
+    <Flex alignItems="center" padding={4} gap={2}>
       <Box>
         <Text>GameZone</Text>
       </Box>

@@ -1,4 +1,4 @@
-import { Badge } from "@chakra-ui/react"
+import { Badge, Box } from "@chakra-ui/react"
 
 type CriticScoreProps = {
   score: number
@@ -14,7 +14,7 @@ function CriticScore({ score }: CriticScoreProps) {
     color = "red"
   }
   return (
-    <Badge colorScheme={color} fontSize={24} borderRadius="md">
+    <Badge colorScheme={color} fontSize={24} borderRadius="md" float="right">
       {score}
     </Badge>
   )
