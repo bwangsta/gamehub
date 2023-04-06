@@ -4,6 +4,7 @@ import axios from "axios"
 import GameCard from "./GameCard"
 import gamesData from "../data/games.json"
 import { Platform } from "../types"
+import GameCardSkeleton from "./GameCardSkeleton"
 
 type Game = {
   id: number
@@ -22,6 +23,7 @@ function GameGrid() {
   const [games, setGames] = useState<Game[]>([])
   const [isLoading, setLoading] = useState(false)
   const [error, setError] = useState("")
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   useEffect(() => {
     // setLoading(true)
@@ -59,6 +61,8 @@ function GameGrid() {
       spacing={4}
       padding={4}
     >
+      {isLoading &&
+        skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
       {gamesList}
     </SimpleGrid>
   )
