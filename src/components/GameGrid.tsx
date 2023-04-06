@@ -3,11 +3,13 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import GameCard from "./GameCard"
 import gamesData from "../data/games.json"
+import { Platform } from "../types"
 
 type Game = {
   id: number
   name: string
   background_image: string
+  parent_platforms: { platform: Platform }[]
 }
 
 type GamesResponse = {
@@ -36,7 +38,12 @@ function GameGrid() {
 
   const gamesList = games.map((game) => {
     return (
-      <GameCard key={game.id} name={game.name} image={game.background_image} />
+      <GameCard
+        key={game.id}
+        name={game.name}
+        image={game.background_image}
+        platforms={game.parent_platforms}
+      />
     )
   })
 
@@ -47,8 +54,8 @@ function GameGrid() {
   return (
     <SimpleGrid
       columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
-      spacing="1rem"
-      padding="1rem"
+      spacing={4}
+      padding={4}
     >
       {gamesList}
     </SimpleGrid>
