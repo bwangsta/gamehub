@@ -14,10 +14,10 @@ import genresData from "../data/genres.json" // DEVELOPMENT PURPOSES ONLY
 
 type GenresListProps = {
   selectedGenre: Genre | null
-  handleGenreClick: (genre: Genre) => void
+  handleSelectGenre: (genre: Genre) => void
 }
 
-function GenresList({ selectedGenre, handleGenreClick }: GenresListProps) {
+function GenresList({ selectedGenre, handleSelectGenre }: GenresListProps) {
   // const { data, error, isLoading } = useData<Genre>("genres")
   // DEVELOPMENT PURPOSES ONLY
   const [data, setGenres] = useState<Genre[]>(genresData.results)
@@ -34,7 +34,7 @@ function GenresList({ selectedGenre, handleGenreClick }: GenresListProps) {
         fontWeight="bold"
       >
         <Button
-          onClick={() => handleGenreClick(genre)}
+          onClick={() => handleSelectGenre(genre)}
           variant="link"
           width="full"
           justifyContent="flex-start"

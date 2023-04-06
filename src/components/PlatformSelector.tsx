@@ -7,12 +7,12 @@ import { Platform } from "../types"
 
 type PlatformSelectorProps = {
   selectedPlatform: Platform | null
-  handlePlatformClick: (platform: Platform) => void
+  handleSelectPlatform: (platform: Platform) => void
 }
 
 function PlatformSelector({
   selectedPlatform,
-  handlePlatformClick,
+  handleSelectPlatform,
 }: PlatformSelectorProps) {
   // const { data } = useData<Platform>(
   //   "platforms/lists/parents"
@@ -21,7 +21,10 @@ function PlatformSelector({
 
   const menuItem = data.map((platform) => {
     return (
-      <MenuItem key={platform.id} onClick={() => handlePlatformClick(platform)}>
+      <MenuItem
+        key={platform.id}
+        onClick={() => handleSelectPlatform(platform)}
+      >
         {platform.name}
       </MenuItem>
     )

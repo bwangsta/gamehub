@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Text, SimpleGrid } from "@chakra-ui/react"
 import GameCard from "./GameCard"
-import { Platform, Genre } from "../types"
+import { Platform, Genre, GameQuery } from "../types"
 import GameCardSkeleton from "./GameCardSkeleton"
 import useData from "../hooks/useData"
 import gamesData from "../data/games.json" // DEVELOPMENT PURPOSES ONLY
@@ -16,20 +16,19 @@ type Game = {
 }
 
 type GameGridProps = {
-  selectedGenre: Genre | null
-  selectedPlatform: Platform | null
+  gameQuery: GameQuery
 }
 
-function GameGrid({ selectedGenre, selectedPlatform }: GameGridProps) {
+function GameGrid({ gameQuery }: GameGridProps) {
   const { data, isLoading, error } = useData<Game>(
     "games",
     {
       params: {
-        genres: selectedGenre?.id,
-        parent_platforms: selectedPlatform?.id,
+        genres: gameQuery.genre?.id,
+        parent_platforms: gameQuery.platform?.id,
       },
     },
-    [selectedGenre?.id, selectedPlatform?.id]
+    [gameQuery]
   )
   const skeletonIds = []
   for (let i = 0; i < 20; i++) {
