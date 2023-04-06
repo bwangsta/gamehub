@@ -1,13 +1,16 @@
 import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react"
 import { FaChevronDown } from "react-icons/fa"
+import { Ordering } from "../types"
 
-type Ordering = {
-  id: number
-  name: string
-  slug: string
+type SortSelectorProps = {
+  selectedOrdering: Ordering | null
+  handleSelectOrdering: (ordering: Ordering) => void
 }
 
-function SortSelector() {
+function SortSelector({
+  selectedOrdering,
+  handleSelectOrdering,
+}: SortSelectorProps) {
   const ordering: Ordering[] = [
     { id: 1, name: "Relevance", slug: "" },
     { id: 2, name: "Name", slug: "name" },
@@ -20,13 +23,17 @@ function SortSelector() {
   ]
 
   const orderingItem = ordering.map((order) => {
-    return <MenuItem key={order.id}>{order.name}</MenuItem>
+    return (
+      <MenuItem key={order.id} onClick={() => handleSelectOrdering(order)}>
+        {order.name}
+      </MenuItem>
+    )
   })
 
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<FaChevronDown size={12} />}>
-        Order by:
+        Order by: {selectedOrdering ? selectedOrdering.name : "Relevance"}
       </MenuButton>
       <MenuList>{orderingItem}</MenuList>
     </Menu>

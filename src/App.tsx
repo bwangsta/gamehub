@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar"
 import GameGrid from "./components/GameGrid"
 import GenresList from "./components/GenresList"
 import PlatformSelector from "./components/PlatformSelector"
-import { Genre, Platform, GameQuery } from "./types"
+import { Genre, Platform, GameQuery, Ordering } from "./types"
 import { useState } from "react"
 import SortSelector from "./components/SortSelector"
 
@@ -19,6 +19,12 @@ function App() {
   function handleSelectPlatform(platform: Platform) {
     setGameQuery((currGameQuery) => {
       return { ...currGameQuery, platform: platform }
+    })
+  }
+
+  function handleSelectOrdering(ordering: Ordering) {
+    setGameQuery((currGameQuery) => {
+      return { ...currGameQuery, ordering: ordering }
     })
   }
 
@@ -52,7 +58,10 @@ function App() {
             selectedPlatform={gameQuery.platform}
             handleSelectPlatform={handleSelectPlatform}
           />
-          <SortSelector />
+          <SortSelector
+            selectedOrdering={gameQuery.ordering}
+            handleSelectOrdering={handleSelectOrdering}
+          />
         </HStack>
         <GameGrid gameQuery={gameQuery} />
       </GridItem>

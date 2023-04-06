@@ -10,7 +10,14 @@ export type Genre = {
   image_background: string
 }
 
+export type Ordering = {
+  id: number
+  name: string
+  slug: string
+}
+
 export type GameQuery = {
   genre: Genre | null
   platform: Platform | null
+  ordering: Ordering | null
 }
