@@ -3,12 +3,17 @@ import { SearchIcon } from "@chakra-ui/icons"
 
 function Searchbar() {
   return (
-    <InputGroup>
+    <InputGroup size={"lg"}>
       <InputLeftElement
         pointerEvents="none"
         children={<SearchIcon color="gray.300" />}
       />
-      <Input type="search" placeholder="Search..." />
+      <Input
+        type="search"
+        placeholder="Search games..."
+        borderRadius="full"
+        variant="filled"
+      />
     </InputGroup>
   )
 }

@@ -20,17 +20,21 @@ type GameGridProps = {
 }
 
 function GameGrid({ gameQuery }: GameGridProps) {
-  const { data, isLoading, error } = useData<Game>(
-    "games",
-    {
-      params: {
-        genres: gameQuery.genre?.id,
-        parent_platforms: gameQuery.platform?.id,
-        ordering: gameQuery.ordering?.slug,
-      },
-    },
-    [gameQuery]
-  )
+  // DEVELOPMENT PURPOSES ONLY
+  const [data, setGames] = useState<Game[]>(gamesData.results)
+  const [isLoading, setLoading] = useState(false)
+  const [error, setError] = useState("")
+  // const { data, isLoading, error } = useData<Game>(
+  //   "games",
+  //   {
+  //     params: {
+  //       genres: gameQuery.genre?.id,
+  //       parent_platforms: gameQuery.platform?.id,
+  //       ordering: gameQuery.ordering?.slug,
+  //     },
+  //   },
+  //   [gameQuery]
+  // )
   const skeletonIds = []
   for (let i = 0; i < data.length; i++) {
     skeletonIds.push(i)
@@ -38,10 +42,6 @@ function GameGrid({ gameQuery }: GameGridProps) {
   const skeletons = skeletonIds.map((skeleton) => (
     <GameCardSkeleton key={skeleton} />
   ))
-  // DEVELOPMENT PURPOSES ONLY
-  // const [data, setGames] = useState<Game[]>(gamesData.results)
-  // const [isLoading, setLoading] = useState(false)
-  // const [error, setError] = useState("")
 
   const gamesList = data.map((game) => {
     return (

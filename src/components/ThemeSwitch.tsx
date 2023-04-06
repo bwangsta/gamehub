@@ -4,11 +4,16 @@ import { MoonIcon, SunIcon } from "@chakra-ui/icons"
 function ThemeSwitch() {
   const { colorMode, toggleColorMode } = useColorMode()
   return (
-    <FormControl display="flex" alignItems="center" gap="0.5rem">
-      <FormLabel htmlFor="toggle-theme" aria-label="Toggle Theme"></FormLabel>
+    <FormControl>
+      <FormLabel
+        htmlFor="toggle-theme"
+        aria-label="Toggle Theme"
+        hidden
+      ></FormLabel>
       <SunIcon />
       <Switch
         id="toggle-theme"
+        marginInline={1}
         size="lg"
         isChecked={colorMode === "dark"}
         onChange={toggleColorMode}
