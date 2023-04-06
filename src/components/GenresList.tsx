@@ -1,6 +1,7 @@
-import { HStack, Text, List, ListItem, Image } from "@chakra-ui/react"
+import { useState } from "react"
+import { HStack, Text, List, ListItem, Image, Spinner } from "@chakra-ui/react"
 import useData from "../hooks/useData"
-import genresData from "../data/genres.json"
+import genresData from "../data/genres.json" // DEVELOPMENT PURPOSES ONLY
 
 type Genre = {
   id: number
@@ -9,8 +10,11 @@ type Genre = {
 }
 
 function GenresList() {
-  // const [genres, setGenres] = useState<Genre[]>(genresData.results) // TESTING PURPOSES ONLY
-  const { data, error } = useData<Genre>("genres")
+  // const { data, error, isLoading } = useData<Genre>("genres")
+  // DEVELOPMENT PURPOSES ONLY
+  const [data, setGenres] = useState<Genre[]>(genresData.results)
+  const [isLoading, setLoading] = useState(false)
+  const [error, setError] = useState("")
 
   const genreList = data.map((genre) => {
     return (
@@ -22,6 +26,10 @@ function GenresList() {
       </ListItem>
     )
   })
+
+  if (isLoading) {
+    return <Spinner />
+  }
 
   if (error) {
     return <Text>{error}</Text>

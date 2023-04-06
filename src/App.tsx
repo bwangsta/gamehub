@@ -10,6 +10,10 @@ function App() {
         base: `"nav" "main" "footer"`,
         lg: `"nav nav" "aside main" "footer footer"`,
       }}
+      gridTemplateColumns={{
+        base: "1fr",
+        lg: "200px 1fr",
+      }}
       gridTemplateRows="4rem 1fr 3rem"
       minHeight="100dvh"
     >

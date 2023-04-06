@@ -1,9 +1,10 @@
+import { useState } from "react"
 import { Text, SimpleGrid } from "@chakra-ui/react"
 import GameCard from "./GameCard"
 import { Platform } from "../types"
 import GameCardSkeleton from "./GameCardSkeleton"
 import useData from "../hooks/useData"
-import gamesData from "../data/games.json"
+import gamesData from "../data/games.json" // DEVELOPMENT PURPOSES ONLY
 
 type Game = {
   id: number
@@ -14,9 +15,12 @@ type Game = {
 }
 
 function GameGrid() {
-  // const [games, setGames] = useState<Game[]>(gamesData.results) // TESTING PURPOSES ONLY
-  const { data, isLoading, error } = useData<Game>("games")
+  // const { data, isLoading, error } = useData<Game>("games")
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  // DEVELOPMENT PURPOSES ONLY
+  const [data, setGames] = useState<Game[]>(gamesData.results)
+  const [isLoading, setLoading] = useState(false)
+  const [error, setError] = useState("")
 
   const gamesList = data.map((game) => {
     return (
