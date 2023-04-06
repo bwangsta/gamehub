@@ -3,6 +3,7 @@ import { Platform, Genre } from "../types"
 import PlatformIcons from "./PlatformIcons"
 import CriticScore from "./CriticScore"
 import GenreTags from "./GenreTags"
+import placeholderImage from "../assets/images/placeholder.webp"
 
 type GameCardProps = {
   name: string
@@ -15,7 +16,12 @@ type GameCardProps = {
 function GameCard({ name, image, platforms, score, genres }: GameCardProps) {
   return (
     <Card overflow="hidden">
-      <Image src={image} alt={name} height="12.5rem" objectFit="cover" />
+      <Image
+        src={image ? image : placeholderImage}
+        alt={name}
+        height="12.5rem"
+        objectFit="cover"
+      />
       <CardBody display="flex" flexDirection="column" gap={2} padding={4}>
         <Heading size="md">{name}</Heading>
         <PlatformIcons platforms={platforms} />

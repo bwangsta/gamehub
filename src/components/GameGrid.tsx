@@ -32,7 +32,7 @@ function GameGrid({ gameQuery }: GameGridProps) {
     [gameQuery]
   )
   const skeletonIds = []
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < data.length; i++) {
     skeletonIds.push(i)
   }
   const skeletons = skeletonIds.map((skeleton) => (
