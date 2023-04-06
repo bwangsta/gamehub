@@ -5,20 +5,32 @@ import platformsData from "../data/platforms.json"
 import { useState } from "react"
 import { Platform } from "../types"
 
-function PlatformSelector() {
+type PlatformSelectorProps = {
+  selectedPlatform: Platform | null
+  handlePlatformClick: (platform: Platform) => void
+}
+
+function PlatformSelector({
+  selectedPlatform,
+  handlePlatformClick,
+}: PlatformSelectorProps) {
   // const { data } = useData<Platform>(
   //   "platforms/lists/parents"
   // )
   const [data] = useState(platformsData.results)
 
   const menuItem = data.map((platform) => {
-    return <MenuItem key={platform.id}>{platform.name}</MenuItem>
+    return (
+      <MenuItem key={platform.id} onClick={() => handlePlatformClick(platform)}>
+        {platform.name}
+      </MenuItem>
+    )
   })
 
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<FaChevronDown size={12} />}>
-        Platforms
+        {selectedPlatform ? selectedPlatform.name : "Platforms"}
       </MenuButton>
       <MenuList>{menuItem}</MenuList>
     </Menu>
