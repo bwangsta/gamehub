@@ -20,24 +20,24 @@ type GamesResponse = {
 }
 
 function GameGrid() {
-  const [games, setGames] = useState<Game[]>([])
+  const [games, setGames] = useState<Game[]>(gamesData.results) // TESTING PURPOSES ONLY
+  // const [games, setGames] = useState<Game[]>([])
   const [isLoading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-  useEffect(() => {
-    // setLoading(true)
-    // axios
-    //   .get<GamesResponse>(
-    //     `https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}`
-    //   )
-    //   .then((response) => setGames(response.data.results))
-    //   .catch((error) => {
-    //     setError(error.message)
-    //   })
-    //   .finally(() => setLoading(false))
-    setGames(gamesData.results) // TESTING PURPOSES ONLY
-  }, [])
+  // useEffect(() => {
+  //   setLoading(true)
+  //   axios
+  //     .get<GamesResponse>(
+  //       `https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}`
+  //     )
+  //     .then((response) => setGames(response.data.results))
+  //     .catch((error) => {
+  //       setError(error.message)
+  //     })
+  //     .finally(() => setLoading(false))
+  // }, [])
 
   const gamesList = games.map((game) => {
     return (

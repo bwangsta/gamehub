@@ -16,10 +16,8 @@ function GameCard({ name, image, platforms, score }: GameCardProps) {
       <Image src={image} alt={name} />
       <CardBody>
         <Heading size="md">{name}</Heading>
-        <HStack justifyContent="space-between">
-          <PlatformIcons platforms={platforms} />
-          <CriticScore score={score} />
-        </HStack>
+        <PlatformIcons platforms={platforms} />
+        <CriticScore score={score} />
       </CardBody>
     </Card>
   )
