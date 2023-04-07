@@ -1,16 +1,7 @@
 import { useState } from "react"
-import {
-  HStack,
-  Text,
-  List,
-  ListItem,
-  Image,
-  Spinner,
-  Button,
-} from "@chakra-ui/react"
-import useData from "../hooks/useData"
+import { HStack, Text, List, ListItem, Image, Button } from "@chakra-ui/react"
 import { Genre } from "../types"
-import genresData from "../data/genres.json" // DEVELOPMENT PURPOSES ONLY
+import genresData from "../data/genres.json"
 
 type GenresListProps = {
   selectedGenre: Genre | null
@@ -18,13 +9,9 @@ type GenresListProps = {
 }
 
 function GenresList({ selectedGenre, handleSelectGenre }: GenresListProps) {
-  // const { data, error, isLoading } = useData<Genre>("genres")
-  // DEVELOPMENT PURPOSES ONLY
-  const [data, setGenres] = useState<Genre[]>(genresData.results)
-  const [isLoading, setLoading] = useState(false)
-  const [error, setError] = useState("")
+  const [genres] = useState<Genre[]>(genresData.results)
 
-  const genreList = data.map((genre) => {
+  const genreList = genres.map((genre) => {
     return (
       <ListItem
         key={genre.id}
@@ -56,14 +43,6 @@ function GenresList({ selectedGenre, handleSelectGenre }: GenresListProps) {
       </ListItem>
     )
   })
-
-  if (isLoading) {
-    return <Spinner />
-  }
-
-  if (error) {
-    return <Text>{error}</Text>
-  }
 
   return <List>{genreList}</List>
 }
