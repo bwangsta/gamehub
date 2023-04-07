@@ -6,6 +6,7 @@ import PlatformSelector from "./components/PlatformSelector"
 import { Genre, Platform, GameQuery, Ordering } from "./types"
 import { useState } from "react"
 import SortSelector from "./components/SortSelector"
+import GameHeading from "./components/GameHeading"
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
@@ -63,7 +64,8 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main" padding={4}>
-        <Flex gap={2} wrap="wrap">
+        <GameHeading genre={gameQuery.genre} platform={gameQuery.platform} />
+        <Flex gap={2} wrap="wrap" marginBlock={4}>
           <PlatformSelector
             selectedPlatform={gameQuery.platform}
             handleSelectPlatform={handleSelectPlatform}

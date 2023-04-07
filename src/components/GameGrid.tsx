@@ -62,11 +62,7 @@ function GameGrid({ gameQuery }: GameGridProps) {
   }
 
   return (
-    <SimpleGrid
-      columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-      spacing={4}
-      marginTop={4}
-    >
+    <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={4}>
       {isLoading ? skeletons : gamesList}
     </SimpleGrid>
   )
