@@ -28,6 +28,16 @@ function App() {
     })
   }
 
+  function handleSearchSubmit(
+    event: React.FormEvent<HTMLFormElement>,
+    text: string
+  ) {
+    event.preventDefault()
+    setGameQuery((currGameQuery) => {
+      return { ...currGameQuery, search: text }
+    })
+  }
+
   return (
     <Grid
       gridTemplateAreas={{
@@ -42,7 +52,7 @@ function App() {
       minHeight="100dvh"
     >
       <GridItem area="nav" margin="auto 0">
-        <Navbar />
+        <Navbar handleSearchSubmit={handleSearchSubmit} />
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingLeft={4} paddingBlock={4}>

@@ -20,4 +20,5 @@ export type GameQuery = {
   genre: Genre | null
   platform: Platform | null
   ordering: Ordering | null
+  search: string
 }
