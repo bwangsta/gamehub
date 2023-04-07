@@ -37,12 +37,14 @@ function GenresList({ selectedGenre, handleSelectGenre }: GenresListProps) {
           onClick={() => handleSelectGenre(genre)}
           variant="link"
           width="full"
+          whiteSpace="normal"
+          textAlign="start"
           justifyContent="flex-start"
           padding={2}
           _hover={{ textDecoration: "none" }}
         >
           <HStack>
-            <Image src={genre.image_background} boxSize={8} />
+            <Image src={genre.image_background} boxSize={8} objectFit="cover" />
             <Text
               fontSize="large"
               color={genre.id === selectedGenre?.id ? "gray.200" : ""}

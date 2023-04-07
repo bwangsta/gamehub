@@ -1,4 +1,4 @@
-import { Grid, GridItem, Flex, Show } from "@chakra-ui/react"
+import { Grid, GridItem, Flex, Show, Heading } from "@chakra-ui/react"
 import Navbar from "./components/Navbar"
 import GameGrid from "./components/GameGrid"
 import GenresList from "./components/GenresList"
@@ -57,6 +57,9 @@ function App() {
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingLeft={4} paddingBlock={4}>
+          <Heading fontSize="2xl" marginBottom={4}>
+            Genres
+          </Heading>
           <GenresList
             selectedGenre={gameQuery.genre}
             handleSelectGenre={handleSelectGenre}
