@@ -14,7 +14,7 @@ function GenreTags({ genres }: GenreTagsProps) {
     )
   })
 
-  return <Wrap flex={1}>{genreTags}</Wrap>
+  return <Wrap>{genreTags}</Wrap>
 }
 
 export default GenreTags

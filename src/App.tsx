@@ -56,7 +56,7 @@ function App() {
         <Navbar handleSearchSubmit={handleSearchSubmit} />
       </GridItem>
       <Show above="lg">
-        <GridItem area="aside" paddingLeft={4} paddingBlock={4}>
+        <GridItem area="aside" paddingLeft={8} paddingBlock={8}>
           <Heading fontSize="2xl" marginBottom={4}>
             Genres
           </Heading>
@@ -66,16 +66,16 @@ function App() {
           />
         </GridItem>
       </Show>
-      <GridItem area="main" padding={4}>
+      <GridItem area="main" padding={8}>
         <GameHeading genre={gameQuery.genre} platform={gameQuery.platform} />
         <Flex gap={2} wrap="wrap" marginBlock={4}>
-          <PlatformSelector
-            selectedPlatform={gameQuery.platform}
-            handleSelectPlatform={handleSelectPlatform}
-          />
           <SortSelector
             selectedOrdering={gameQuery.ordering}
             handleSelectOrdering={handleSelectOrdering}
+          />
+          <PlatformSelector
+            selectedPlatform={gameQuery.platform}
+            handleSelectPlatform={handleSelectPlatform}
           />
         </Flex>
         <GameGrid gameQuery={gameQuery} />

@@ -1,5 +1,13 @@
 import { useState } from "react"
-import { HStack, Text, List, ListItem, Image, Button } from "@chakra-ui/react"
+import {
+  HStack,
+  Text,
+  List,
+  ListItem,
+  Image,
+  Button,
+  useColorModeValue,
+} from "@chakra-ui/react"
 import { Genre } from "../types"
 import genresData from "../data/genres.json"
 
@@ -11,14 +19,15 @@ type GenresListProps = {
 function GenresList({ selectedGenre, handleSelectGenre }: GenresListProps) {
   const [genres] = useState<Genre[]>(genresData.results)
 
+  const bg = useColorModeValue("gray.200", "gray.700")
+
   const genreList = genres.map((genre) => {
     return (
       <ListItem
         key={genre.id}
         borderRadius="md"
-        bgColor={genre.id === selectedGenre?.id ? "gray.700" : ""}
-        _hover={{ backgroundColor: "gray.700" }}
-        fontWeight="bold"
+        bgColor={genre.id === selectedGenre?.id ? bg : ""}
+        _hover={{ bg }}
       >
         <Button
           onClick={() => handleSelectGenre(genre)}
@@ -32,12 +41,7 @@ function GenresList({ selectedGenre, handleSelectGenre }: GenresListProps) {
         >
           <HStack>
             <Image src={genre.image_background} boxSize={8} objectFit="cover" />
-            <Text
-              fontSize="large"
-              color={genre.id === selectedGenre?.id ? "gray.200" : ""}
-            >
-              {genre.name}
-            </Text>
+            <Text fontSize="large">{genre.name}</Text>
           </HStack>
         </Button>
       </ListItem>

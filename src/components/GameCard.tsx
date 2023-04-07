@@ -1,4 +1,4 @@
-import { Card, CardBody, Image, Heading, HStack } from "@chakra-ui/react"
+import { Card, CardBody, Image, Heading, LightMode } from "@chakra-ui/react"
 import { Platform, Genre } from "../types"
 import PlatformIcons from "./PlatformIcons"
 import CriticScore from "./CriticScore"
@@ -15,7 +15,15 @@ type GameCardProps = {
 
 function GameCard({ name, image, platforms, score, genres }: GameCardProps) {
   return (
-    <Card overflow="hidden">
+    <Card
+      overflow="hidden"
+      boxShadow="2xl"
+      borderRadius="2xl"
+      _hover={{ transform: "scale(1.03)" }}
+    >
+      <LightMode>
+        <CriticScore score={score} />
+      </LightMode>
       <Image
         src={image ? image : placeholderImage}
         alt={name}
@@ -26,7 +34,6 @@ function GameCard({ name, image, platforms, score, genres }: GameCardProps) {
         <Heading size="md">{name}</Heading>
         <PlatformIcons platforms={platforms} />
         <GenreTags genres={genres} />
-        <CriticScore score={score} />
       </CardBody>
     </Card>
   )

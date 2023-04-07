@@ -21,21 +21,21 @@ type GameGridProps = {
 
 function GameGrid({ gameQuery }: GameGridProps) {
   // DEVELOPMENT PURPOSES ONLY
-  const [data, setGames] = useState<Game[]>(gamesData.results)
-  const [isLoading, setLoading] = useState(false)
-  const [error, setError] = useState("")
-  // const { data, isLoading, error } = useData<Game>(
-  //   "games",
-  //   {
-  //     params: {
-  //       genres: gameQuery.genre?.id,
-  //       parent_platforms: gameQuery.platform?.id,
-  //       ordering: gameQuery.ordering?.slug,
-  //       search: gameQuery.search,
-  //     },
-  //   },
-  //   [gameQuery]
-  // )
+  // const [data, setGames] = useState<Game[]>(gamesData.results)
+  // const [isLoading, setLoading] = useState(false)
+  // const [error, setError] = useState("")
+  const { data, isLoading, error } = useData<Game>(
+    "games",
+    {
+      params: {
+        genres: gameQuery.genre?.id,
+        parent_platforms: gameQuery.platform?.id,
+        ordering: gameQuery.ordering?.slug,
+        search: gameQuery.search,
+      },
+    },
+    [gameQuery]
+  )
   const skeletonIds = []
   for (let i = 0; i < data.length; i++) {
     skeletonIds.push(i)
@@ -62,7 +62,7 @@ function GameGrid({ gameQuery }: GameGridProps) {
   }
 
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={4}>
+    <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
       {isLoading ? skeletons : gamesList}
     </SimpleGrid>
   )

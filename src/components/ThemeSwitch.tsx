@@ -1,24 +1,29 @@
-import { Switch, FormControl, FormLabel, useColorMode } from "@chakra-ui/react"
-import { MoonIcon, SunIcon } from "@chakra-ui/icons"
+import {
+  Switch,
+  FormControl,
+  FormLabel,
+  useColorMode,
+  Icon,
+} from "@chakra-ui/react"
+import { BsSun, BsMoon } from "react-icons/bs"
 
 function ThemeSwitch() {
   const { colorMode, toggleColorMode } = useColorMode()
   return (
-    <FormControl>
+    <FormControl alignItems="center" display="flex" gap={2}>
       <FormLabel
         htmlFor="toggle-theme"
         aria-label="Toggle Theme"
         hidden
       ></FormLabel>
-      <SunIcon />
+      <Icon as={BsSun} boxSize="1.25em" />
       <Switch
         id="toggle-theme"
-        marginInline={1}
         size="lg"
         isChecked={colorMode === "dark"}
         onChange={toggleColorMode}
       />
-      <MoonIcon />
+      <Icon as={BsMoon} boxSize="1.25em" />
     </FormControl>
   )
 }

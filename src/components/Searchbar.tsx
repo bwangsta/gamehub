@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { Input, InputLeftElement, InputGroup } from "@chakra-ui/react"
-import { SearchIcon } from "@chakra-ui/icons"
+import { Input, InputLeftElement, InputGroup, Icon } from "@chakra-ui/react"
+import { FaSearch } from "react-icons/fa"
 
 type SearchbarProps = {
   handleSearchSubmit: (
@@ -22,7 +22,7 @@ function Searchbar({ handleSearchSubmit }: SearchbarProps) {
       <InputGroup size={"lg"}>
         <InputLeftElement
           pointerEvents="none"
-          children={<SearchIcon color="gray.300" />}
+          children={<Icon as={FaSearch} color="gray.400" />}
         />
         <Input
           type="search"

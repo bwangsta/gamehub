@@ -1,4 +1,5 @@
-import { Flex, Box, Text } from "@chakra-ui/react"
+import { Flex, Box, Icon } from "@chakra-ui/react"
+import { GiGamepad } from "react-icons/gi"
 import Searchbar from "./Searchbar"
 import ThemeSwitch from "./ThemeSwitch"
 
@@ -13,7 +14,7 @@ function Navbar({ handleSearchSubmit }: NavbarProps) {
   return (
     <Flex alignItems="center" padding={4} gap={4}>
       <Box>
-        <Text>GameZone</Text>
+        <Icon as={GiGamepad} boxSize="3em" />
       </Box>
       <Box flex={1}>
         <Searchbar handleSearchSubmit={handleSearchSubmit} />
